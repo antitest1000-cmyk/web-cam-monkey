@@ -3,5 +3,5 @@
  * Override at runtime: window.APP_CONFIG.BACKEND_URL = 'https://your-api.example.com';
  */
 window.APP_CONFIG = {
-  BACKEND_URL: 'http://localhost:3000',
+  BACKEND_URL: 'https://web-cam-monkey.onrender.com',
 };
