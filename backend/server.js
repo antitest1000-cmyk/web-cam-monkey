@@ -15,16 +15,44 @@ const crypto = require('crypto');
 
 const app = express();
 const server = http.createServer(app);
-const FRONTEND_ORIGIN_RAW = process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173,https://monkey-webcam.netlify.app';
-const FRONTEND_ORIGINS = FRONTEND_ORIGIN_RAW.split(',')
-  .map((s) => s.trim())
-  .filter(Boolean);
-const corsOrigin = FRONTEND_ORIGINS.includes('*') ? true : FRONTEND_ORIGINS;
+
+function setCors(setHeader, req) {
+  const origin = req.headers.origin;
+  if (!origin) return;
+  setHeader('Access-Control-Allow-Origin', origin);
+  setHeader('Access-Control-Allow-Credentials', 'true');
+  setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  setHeader('Vary', 'Origin');
+}
+
+app.use((req, res, next) => {
+  setCors((key, value) => res.setHeader(key, value), req);
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 const io = new Server(server, {
-  cors: { origin: corsOrigin, methods: ['GET', 'POST'] },
+  cors: {
+    origin: true,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
   pingTimeout: 60000,
-  transports: ['websocket', 'polling'],
+  transports: ['polling', 'websocket'],
+});
+
+io.engine.on('initial_headers', (headers, req) => {
+  setCors((key, value) => {
+    headers[key.toLowerCase()] = value;
+  }, req);
+});
+io.engine.on('headers', (headers, req) => {
+  setCors((key, value) => {
+    headers[key.toLowerCase()] = value;
+  }, req);
 });
 
 // ─── State Definitions ────────────────────────────────────────────────────────
@@ -372,5 +400,5 @@ app.get('/health', (_req, res) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`\n🚀 Backend (Socket.IO) at http://localhost:${PORT}`);
-  console.log(`   Allowed frontend origin: ${FRONTEND_ORIGINS.includes('*') ? '*' : FRONTEND_ORIGINS.join(', ')}\n`);
+  console.log('   CORS: reflecting request Origin (Netlify + local)\n');
 });
