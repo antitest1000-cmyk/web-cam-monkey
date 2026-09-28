@@ -15,7 +15,7 @@ const crypto = require('crypto');
 
 const app = express();
 const server = http.createServer(app);
-const FRONTEND_ORIGIN_RAW = process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173';
+const FRONTEND_ORIGIN_RAW = process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173,https://monkey-webcam.netlify.app';
 const FRONTEND_ORIGINS = FRONTEND_ORIGIN_RAW.split(',')
   .map((s) => s.trim())
   .filter(Boolean);

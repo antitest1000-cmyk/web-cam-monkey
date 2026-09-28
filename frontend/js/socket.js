@@ -11,7 +11,19 @@
 (async function initChat() {
   // ── Connect to Socket.IO ───────────────────────────────────────────────────
   const BACKEND_URL = (window.APP_CONFIG && window.APP_CONFIG.BACKEND_URL) || 'http://localhost:3000';
-  const socket = io(BACKEND_URL, { autoConnect: true });
+  if (typeof io !== 'function') {
+    UI.setStatus('disconnected', 'Offline');
+    UI.showToast('Chat library failed to load. Refresh the page.', 6000);
+    return;
+  }
+  const socket = io(BACKEND_URL, {
+    autoConnect: true,
+    timeout: 60000,
+    reconnection: true,
+    reconnectionDelay: 2000,
+    reconnectionAttempts: Infinity,
+    transports: ['polling', 'websocket'],
+  });
 
   // ── State ──────────────────────────────────────────────────────────────────
   let isInitiator  = false;
