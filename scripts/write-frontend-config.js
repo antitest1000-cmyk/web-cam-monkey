@@ -1,4 +1,4 @@
-# Writes frontend/config.js from BACKEND_URL (used by Netlify builds).
+// Writes frontend/config.js from BACKEND_URL (used by Netlify builds).
 const fs = require('fs');
 const path = require('path');
 
