@@ -10,7 +10,8 @@
 
 (async function initChat() {
   // ── Connect to Socket.IO ───────────────────────────────────────────────────
-  const socket = io({ autoConnect: true });
+  const BACKEND_URL = (window.APP_CONFIG && window.APP_CONFIG.BACKEND_URL) || 'http://localhost:3000';
+  const socket = io(BACKEND_URL, { autoConnect: true });
 
   // ── State ──────────────────────────────────────────────────────────────────
   let isInitiator  = false;

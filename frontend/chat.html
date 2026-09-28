@@ -23,7 +23,7 @@
 
   <!-- ── Top Bar ─────────────────────────────────────────────────────────── -->
   <header class="topbar" id="topbar">
-    <a href="/" class="topbar-logo" id="topbar-logo">
+    <a href="index.html" class="topbar-logo" id="topbar-logo">
       <img src="img/logo.png" alt="Monkey Logo" class="nav-logo-img">
       Monkey
     </a>
@@ -34,7 +34,7 @@
       <span class="status-text" id="status-text">Idle</span>
     </div>
 
-    <a href="/" class="topbar-leave" id="topbar-leave" title="Leave">
+    <a href="index.html" class="topbar-leave" id="topbar-leave" title="Leave">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round"
           stroke-linejoin="round" />
@@ -214,9 +214,8 @@
   <!-- ── Toast Notification ──────────────────────────────────────────────── -->
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
-  <!-- Socket.IO client (served by server) -->
-  <script src="/socket.io/socket.io.js"></script>
-  <!-- App modules -->
+  <script src="config.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/webrtc.js"></script>
   <script src="js/socket.js"></script>

@@ -1,0 +1,12 @@
+[build]
+  publish = "frontend"
+  command = "node scripts/write-frontend-config.js"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Optional: keep /chat working the same as local static serving
+[[redirects]]
+  from = "/chat"
+  to = "/chat.html"
+  status = 200

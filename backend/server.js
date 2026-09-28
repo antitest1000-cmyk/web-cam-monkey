@@ -2,7 +2,7 @@
  * server.js — Random Video Chat Backend
  *
  * Handles:
- *  - Serving static files from /public
+ *  - Socket.IO matchmaking and signaling (no static frontend)
  *  - Strict state-machine matchmaking
  *  - WebRTC signaling relay
  *  - Skip logic, disconnect cleanup, and atomic room management
@@ -11,14 +11,20 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const path = require('path');
 const crypto = require('crypto');
 
 const app = express();
 const server = http.createServer(app);
+const FRONTEND_ORIGIN_RAW = process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173';
+const FRONTEND_ORIGINS = FRONTEND_ORIGIN_RAW.split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+const corsOrigin = FRONTEND_ORIGINS.includes('*') ? true : FRONTEND_ORIGINS;
+
 const io = new Server(server, {
-  cors: { origin: '*' },
+  cors: { origin: corsOrigin, methods: ['GET', 'POST'] },
   pingTimeout: 60000,
+  transports: ['websocket', 'polling'],
 });
 
 // ─── State Definitions ────────────────────────────────────────────────────────
@@ -359,13 +365,12 @@ io.on('connection', (socket) => {
   });
 });
 
-// ─── Static Files ─────────────────────────────────────────────────────────────
-
-app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
-
-// ─── Start Server ─────────────────────────────────────────────────────────────
+app.get('/health', (_req, res) => {
+  res.json({ ok: true });
+});
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`\n🚀 Random Video Chat running at http://localhost:${PORT}\n`);
+  console.log(`\n🚀 Backend (Socket.IO) at http://localhost:${PORT}`);
+  console.log(`   Allowed frontend origin: ${FRONTEND_ORIGINS.includes('*') ? '*' : FRONTEND_ORIGINS.join(', ')}\n`);
 });
