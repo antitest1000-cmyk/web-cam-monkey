@@ -89,6 +89,7 @@
 
   socket.on('disconnect', (reason) => {
     console.warn('[Socket] Disconnected:', reason);
+    FillerPartner.stopAll();
     UI.setStatus('disconnected');
     UI.showToast('Connection lost. Reconnecting…');
   });
@@ -108,11 +109,13 @@
     UI.setStatus('waiting');
     UI.setOverlay('waiting');
     UI.enterWaitingMode();
+    FillerPartner.arm();
   });
 
   // A match was found!
   socket.on('matched', async ({ initiator }) => {
     console.log(`[Chat] Matched! initiator=${initiator}`);
+    FillerPartner.stopForRealMatch();
     isInitiator = initiator;
 
     UI.setStatus('connecting');
@@ -174,6 +177,7 @@
     UI.setOverlay('waiting');
     UI.enterWaitingMode();
     UI.clearChat();
+    FillerPartner.arm();
   });
 
   // ── Button Handlers ────────────────────────────────────────────────────────
@@ -192,6 +196,7 @@
     UI.setStatus('waiting');
     UI.setOverlay('waiting');
     UI.enterWaitingMode();
+    FillerPartner.arm();
   });
 
   // ── Next ───────────────────────────────────────────────────────────────────
@@ -199,6 +204,7 @@
     if (!socket.connected) return;
     console.log('[Chat] Next clicked');
 
+    FillerPartner.stopForRealMatch();
     WebRTCManager.closePeerConnection();
     isInitiator = false;
 
@@ -207,12 +213,14 @@
     UI.setStatus('waiting');
     UI.setOverlay('waiting');
     UI.clearChat();
+    FillerPartner.skip();
   });
 
   // ── End ────────────────────────────────────────────────────────────────────
   btnEnd.addEventListener('click', () => {
     console.log('[Chat] End clicked');
 
+    FillerPartner.stopAll();
     WebRTCManager.closePeerConnection();
     isInitiator = false;
 

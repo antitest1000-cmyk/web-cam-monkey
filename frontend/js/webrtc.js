@@ -254,6 +254,8 @@ const WebRTCManager = (() => {
       console.log('[WebRTC] Peer connection closed');
     }
     remoteVideo.srcObject = null;
+    remoteVideo.removeAttribute('src');
+    try { remoteVideo.load(); } catch (err) { /* ignore */ }
     pendingCandidates     = [];
     remoteDescSet         = false;
   }
