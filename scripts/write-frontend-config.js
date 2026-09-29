@@ -19,19 +19,19 @@ if (site) {
   const pages = [
     ['/', 'daily', '1.0'],
 
-    ['/about.html', 'monthly', '0.8'],
-    ['/how-it-works.html', 'monthly', '0.8'],
-    ['/safety.html', 'monthly', '0.8'],
-    ['/guidelines.html', 'monthly', '0.7'],
-    ['/faq.html', 'weekly', '0.8'],
-    ['/blog.html', 'weekly', '0.8'],
-    ['/webcam-chat-safety.html', 'monthly', '0.7'],
-    ['/webcam-chat-camera-setup.html', 'monthly', '0.7'],
-    ['/peer-to-peer-video-chat.html', 'monthly', '0.7'],
-    ['/cookie-policy.html', 'yearly', '0.5'],
-    ['/privacy.html', 'yearly', '0.5'],
-    ['/terms.html', 'yearly', '0.5'],
-    ['/contact.html', 'yearly', '0.6'],
+    ['/about', 'monthly', '0.8'],
+    ['/how-it-works', 'monthly', '0.8'],
+    ['/safety', 'monthly', '0.8'],
+    ['/guidelines', 'monthly', '0.7'],
+    ['/faq', 'weekly', '0.8'],
+    ['/blog', 'weekly', '0.8'],
+    ['/webcam-chat-safety', 'monthly', '0.7'],
+    ['/webcam-chat-camera-setup', 'monthly', '0.7'],
+    ['/peer-to-peer-video-chat', 'monthly', '0.7'],
+    ['/cookie-policy', 'yearly', '0.5'],
+    ['/privacy', 'yearly', '0.5'],
+    ['/terms', 'yearly', '0.5'],
+    ['/contact', 'yearly', '0.6'],
   ];
   const urls = pages
     .map(([loc, freq, pri]) => {

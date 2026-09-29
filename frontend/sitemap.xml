@@ -6,67 +6,67 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/about.html</loc>
+    <loc>https://monkey-webcam.netlify.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/how-it-works.html</loc>
+    <loc>https://monkey-webcam.netlify.app/how-it-works</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/safety.html</loc>
+    <loc>https://monkey-webcam.netlify.app/safety</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/guidelines.html</loc>
+    <loc>https://monkey-webcam.netlify.app/guidelines</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/faq.html</loc>
+    <loc>https://monkey-webcam.netlify.app/faq</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/blog.html</loc>
+    <loc>https://monkey-webcam.netlify.app/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/webcam-chat-safety.html</loc>
+    <loc>https://monkey-webcam.netlify.app/webcam-chat-safety</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/webcam-chat-camera-setup.html</loc>
+    <loc>https://monkey-webcam.netlify.app/webcam-chat-camera-setup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/peer-to-peer-video-chat.html</loc>
+    <loc>https://monkey-webcam.netlify.app/peer-to-peer-video-chat</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/cookie-policy.html</loc>
+    <loc>https://monkey-webcam.netlify.app/cookie-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/privacy.html</loc>
+    <loc>https://monkey-webcam.netlify.app/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/terms.html</loc>
+    <loc>https://monkey-webcam.netlify.app/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://monkey-webcam.netlify.app/contact.html</loc>
+    <loc>https://monkey-webcam.netlify.app/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
