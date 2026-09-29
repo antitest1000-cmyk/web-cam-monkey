@@ -5,8 +5,81 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Optional: keep /chat working the same as local static serving
+# Pretty portal URLs
 [[redirects]]
   from = "/chat"
   to = "/chat.html"
   status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/how-it-works"
+  to = "/how-it-works.html"
+  status = 200
+
+[[redirects]]
+  from = "/safety"
+  to = "/safety.html"
+  status = 200
+
+[[redirects]]
+  from = "/guidelines"
+  to = "/guidelines.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/webcam-chat-safety"
+  to = "/webcam-chat-safety.html"
+  status = 200
+
+[[redirects]]
+  from = "/webcam-chat-camera-setup"
+  to = "/webcam-chat-camera-setup.html"
+  status = 200
+
+[[redirects]]
+  from = "/peer-to-peer-video-chat"
+  to = "/peer-to-peer-video-chat.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookie-policy"
+  to = "/cookie-policy.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(self), microphone=(self), geolocation=()"

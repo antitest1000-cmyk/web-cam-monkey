@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Monkey Video Chat Works — Matching and WebRTC</title>
+  <meta name="description" content="How Monkey pairs two browsers, what peer-to-peer video means, and what the signaling server is used for." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://monkey-webcam.netlify.app/how-it-works.html" />
+  <link rel="icon" href="img/logo.png" type="image/png" />
+  <meta property="og:title" content="How Monkey Video Chat Works" />
+  <meta property="og:description" content="Random matchmaking plus WebRTC peer-to-peer video in the browser." />
+  <meta property="og:image" content="https://monkey-webcam.netlify.app/img/hero.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://monkey-webcam.netlify.app/img/hero.png" />
+  <meta property="og:url" content="https://monkey-webcam.netlify.app/how-it-works.html" />
+  <meta name="theme-color" content="#1f4b82" />
+  <link rel="stylesheet" href="css/portal.css" />
+</head>
+<body>
+  <div class="portal">
+    <header class="portal-header">
+      <a class="portal-brand" href="index.html">
+        <img src="img/logo.png" alt="Monkey Video Chat logo" class="portal-logo" width="42" height="42" />
+        <div>
+          <div class="portal-title">Monkey Video Chat</div>
+          <div class="portal-tagline">Random live video chat &middot; no account required</div>
+        </div>
+      </a>
+    </header>
+    <nav class="portal-nav" aria-label="Main">
+      <a href="index.html" data-nav="index.html">Home</a><span class="sep">|</span>
+      <a href="chat.html" data-nav="chat.html">Video Chat</a><span class="sep">|</span>
+      <a href="about.html" data-nav="about.html">About</a><span class="sep">|</span>
+      <a href="how-it-works.html" data-nav="how-it-works.html">How It Works</a><span class="sep">|</span>
+      <a href="safety.html" data-nav="safety.html">Safety</a><span class="sep">|</span>
+      <a href="guidelines.html" data-nav="guidelines.html">Guidelines</a><span class="sep">|</span>
+      <a href="faq.html" data-nav="faq.html">FAQ</a><span class="sep">|</span><a href="blog.html" data-nav="blog.html">Blog</a><span class="sep">|</span>
+      <a href="contact.html" data-nav="contact.html">Contact</a>
+    </nav>
+    <div class="crumb"><a href="index.html">Portal</a> &raquo; How It Works</div>
+    <div class="page-pad">
+      <div class="box">
+        <div class="box-h">Step by step</div>
+        <div class="box-b">
+          <h1 class="page-title">How a session is created</h1>
+          <ol class="list-plain">
+            <li>You open the <a href="chat.html">Video Chat</a> page and click Start.</li>
+            <li>The browser asks for camera and microphone permission. If you refuse, there is no usable video session.</li>
+            <li>Your page joins a matchmaking queue on the signaling server.</li>
+            <li>When another visitor is also waiting, both pages exchange connection details (SDP/ICE) through that server.</li>
+            <li>Audio and video then try to flow directly between the two browsers using WebRTC.</li>
+            <li>Next drops the current peer and returns you to the queue. End leaves the queue and stops local media.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-h">What the server is for</div>
+        <div class="box-b">
+          <p>The backend is a waiting room and a message relay for setup. It is not designed as a video recorder. That does not make a stranger on the other end trustworthy. They can still screenshot, record their own screen, or behave badly. Use Next.</p>
+          <p>Networks sometimes need extra help (NAT traversal). Connection quality depends on both machines, cameras, and internet links. HD is not guaranteed.</p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-h">Browser requirements</div>
+        <div class="box-b">
+          <p>Use a current Chrome, Edge, Firefox, or Safari build. Camera access on some phones only works over HTTPS. If the site is served over plain HTTP on a LAN, permission prompts may fail.</p>
+        </div>
+      </div>
+      <p class="btn-row"><a class="btn btn-primary" href="chat.html">Try it</a> <a class="btn btn-face" href="safety.html">Read safety notes</a></p>
+    </div>
+    <footer class="portal-footer">
+      <div class="footer-links">
+        <a href="index.html">Home</a> · <a href="chat.html">Video Chat</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+       · <a href="cookie-policy.html">Cookies</a></div>
+      <div class="footer-copy">© 2026 Monkey Video Chat</div>
+    </footer>
+  </div>
+  <script src="js/site.js"></script>
+</body>
+</html>

@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://monkey-webcam.netlify.app/sitemap.xml

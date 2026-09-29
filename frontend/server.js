@@ -20,6 +20,19 @@ const MIME = {
   '.txt': 'text/plain; charset=utf-8',
   '.ico': 'image/x-icon',
   '.webp': 'image/webp',
+  '.xml': 'application/xml; charset=utf-8',
+};
+
+const PRETTY = {
+  '/chat': '/chat.html',
+  '/about': '/about.html',
+  '/how-it-works': '/how-it-works.html',
+  '/safety': '/safety.html',
+  '/guidelines': '/guidelines.html',
+  '/faq': '/faq.html',
+  '/privacy': '/privacy.html',
+  '/terms': '/terms.html',
+  '/contact': '/contact.html',
 };
 
 function send(res, status, body, headers) {
@@ -30,7 +43,7 @@ function send(res, status, body, headers) {
 http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
   let rel = urlPath === '/' ? '/index.html' : urlPath;
-  if (rel === '/chat') rel = '/chat.html';
+  if (PRETTY[rel]) rel = PRETTY[rel];
 
   const file = path.normalize(path.join(ROOT, rel));
   if (!file.startsWith(ROOT)) {
@@ -40,7 +53,13 @@ http.createServer((req, res) => {
 
   fs.readFile(file, (err, data) => {
     if (err) {
-      send(res, 404, 'Not found');
+      fs.readFile(path.join(ROOT, '404.html'), (err404, body404) => {
+        if (err404) {
+          send(res, 404, 'Not found');
+          return;
+        }
+        send(res, 404, body404, { 'Content-Type': 'text/html; charset=utf-8' });
+      });
       return;
     }
     const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
